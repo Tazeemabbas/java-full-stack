@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Top Songs Global</title>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#e9e9e9;
+      height:100vh;
+      display:flex;
+      align-items:flex-start;
+      justify-content:flex-start;
+      padding:16px;
+    }
+
+    .music-card{
+      width:180px;
+      height:392px;
+      background:linear-gradient(180deg,#081321 0%, #091625 45%, #07101d 100%);
+      border-radius:6px;
+      position:relative;
+      overflow:hidden;
+      box-shadow:
+        0 10px 18px rgba(0,0,0,0.25),
+        inset 0 1px 0 rgba(255,255,255,0.03);
+      padding:18px 12px 12px;
+    }
+
+    /* Decorative curved lines */
+    .music-card::before{
+      content:"";
+      position:absolute;
+      left:-45px;
+      top:110px;
+      width:120px;
+      height:120px;
+      border:1px solid rgba(255,255,255,0.05);
+      border-radius:50%;
+    }
+
+    .music-card::after{
+      content:"";
+      position:absolute;
+      right:-70px;
+      top:230px;
+      width:160px;
+      height:160px;
+      border:1px solid rgba(255,255,255,0.04);
+      border-radius:50%;
+    }
+
+    .album-box{
+      width:84px;
+      height:84px;
+      background:#f2ead8;
+      border-radius:6px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 3px 8px rgba(0,0,0,0.2);
+    }
+
+    .album-circle{
+      width:46px;
+      height:46px;
+      border-radius:50%;
+      background:#e4683b;
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .album-circle::before{
+      content:"";
+      position:absolute;
+      width:18px;
+      height:18px;
+      background:#2f2f2f;
+      border-radius:50%;
+    }
+
+    .album-circle i{
+      color:#ffd44f;
+      font-size:10px;
+      position:absolute;
+    }
+
+    .album-circle .music-left{
+      top:8px;
+      left:10px;
+    }
+
+    .album-circle .music-right{
+      top:6px;
+      right:10px;
+    }
+
+    .play-icon{
+      position:relative;
+      z-index:2;
+      color:#fff;
+      font-size:10px;
+      margin-left:2px;
+    }
+
+    .title{
+      text-align:center;
+      color:#fff;
+      font-size:12px;
+      font-weight:600;
+      margin-top:14px;
+      line-height:1.2;
+    }
+
+    .subtitle{
+      text-align:center;
+      color:#6f8195;
+      font-size:9px;
+      margin-top:4px;
+      font-weight:400;
+    }
+
+    .song-list{
+      margin-top:18px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .song{
+      background:#0d1b2b;
+      border-radius:7px;
+      padding:8px 8px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+
+    .song-info{
+      display:flex;
+      flex-direction:column;
+      gap:1px;
+    }
+
+    .song-name{
+      color:#fff;
+      font-size:10px;
+      font-weight:500;
+      white-space:nowrap;
+    }
+
+    .artist{
+      color:#7b8b9b;
+      font-size:8px;
+      font-weight:400;
+    }
+
+    .song-actions{
+      display:flex;
+      align-items:center;
+      gap:7px;
+      color:#95a3b3;
+      font-size:10px;
+    }
+
+    .duration{
+      font-size:7px;
+      color:#9aa9ba;
+      border:1px solid rgba(255,255,255,0.1);
+      padding:1px 4px;
+      border-radius:10px;
+    }
+
+    .bottom-player{
+      position:absolute;
+      left:8px;
+      right:8px;
+      bottom:10px;
+      height:36px;
+      background:#f7f2e9;
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 8px;
+      box-shadow:0 5px 12px rgba(0,0,0,0.3);
+    }
+
+    .bottom-left{
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+
+    .mini-art{
+      width:18px;
+      height:18px;
+      border-radius:4px;
+      background:#f2ead8;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .mini-circle{
+      width:11px;
+      height:11px;
+      border-radius:50%;
+      background:#e4683b;
+      position:relative;
+    }
+
+    .mini-circle::before{
+      content:"";
+      position:absolute;
+      width:5px;
+      height:5px;
+      background:#2f2f2f;
+      border-radius:50%;
+      top:3px;
+      left:3px;
+    }
+
+    .track-info{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
+
+    .track-name{
+      font-size:8px;
+      color:#202020;
+      font-weight:600;
+    }
+
+    .track-artist{
+      font-size:6px;
+      color:#8b8b8b;
+    }
+
+    .player-controls{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      color:#1f2a39;
+      font-size:10px;
+    }
+
+    .play-btn{
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      background:#0d1b2b;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:8px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="music-card">
+
+    <div class="album-box">
+      <div class="album-circle">
+        <i class="fa-solid fa-music music-left"></i>
+        <i class="fa-solid fa-music music-right"></i>
+        <i class="fa-solid fa-play play-icon"></i>
+      </div>
+    </div>
+
+    <div class="title">Top Songs Global</div>
+    <div class="subtitle">Weekly Charts</div>
+
+    <div class="song-list">
+
+      <div class="song">
+        <div class="song-info">
+          <div class="song-name">Blinding Lights</div>
+          <div class="artist">The Weeknd</div>
+        </div>
+
+        <div class="song-actions">
+          <span class="duration">3:20</span>
+          <i class="fa-regular fa-heart"></i>
+          <i class="fa-solid fa-plus"></i>
+          <i class="fa-solid fa-ellipsis"></i>
+        </div>
+      </div>
+
+      <div class="song">
+        <div class="song-info">
+          <div class="song-name">Levitating</div>
+          <div class="artist">Dua Lipa</div>
+        </div>
+
+        <div class="song-actions">
+          <span class="duration">3:23</span>
+          <i class="fa-regular fa-heart"></i>
+          <i class="fa-solid fa-plus"></i>
+          <i class="fa-solid fa-ellipsis"></i>
+        </div>
+      </div>
+
+      <div class="song">
+        <div class="song-info">
+          <div class="song-name">Heat Waves</div>
+          <div class="artist">Glass Animals</div>
+        </div>
+
+        <div class="song-actions">
+          <span class="duration">3:58</span>
+          <i class="fa-regular fa-heart"></i>
+          <i class="fa-solid fa-plus"></i>
+          <i class="fa-solid fa-ellipsis"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="bottom-player">
+
+      <div class="bottom-left">
+        <div class="mini-art">
+          <div class="mini-circle"></div>
+        </div>
+
+        <div class="track-info">
+          <span class="track-name">Levitating</span>
+          <span class="track-artist">Dua Lipa</span>
+        </div>
+      </div>
+
+      <div class="player-controls">
+        <i class="fa-solid fa-backward-step"></i>
+
+        <div class="play-btn">
+          <i class="fa-solid fa-play"></i>
+        </div>
+
+        <i class="fa-solid fa-forward-step"></i>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
