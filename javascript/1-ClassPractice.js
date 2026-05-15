@@ -16,3 +16,6 @@ console.log(10 / 2)
 
 
 //Everything that written with the two forward slashes those are called as comments and they are not the part of the program or code they never execute
+
+
+//End of the class and practice
