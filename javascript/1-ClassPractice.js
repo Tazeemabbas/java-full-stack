@@ -6,4 +6,8 @@ console.log("Hello World")
 console.log(5+3)
 
 //Substraction
-console.log(10-5)
+console.log(10-5) 
+
+//Multiplication
+console.log(3 * 9)
+
