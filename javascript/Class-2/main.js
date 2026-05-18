@@ -11,3 +11,6 @@ var name = "Tazu"
 console.log(name)
 
 console.log(typeof(name))
+
+
+alert("No data here quit!!")
