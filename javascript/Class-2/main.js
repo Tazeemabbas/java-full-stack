@@ -6,3 +6,6 @@ console.log(age)
 const x = 20;
 
 console.log(x)
+
+var name = "Tazu"
+console.log(name)
