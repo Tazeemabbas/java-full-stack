@@ -13,4 +13,6 @@ console.log(name)
 console.log(typeof(name))
 
 
-alert("No data here quit!!")
+// alert("No data here quit!!")
+
+confirm("Do want to exit")
