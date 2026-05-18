@@ -15,4 +15,7 @@ console.log(typeof(name))
 
 // alert("No data here quit!!")
 
-confirm("Do want to exit")
+// confirm("Do want to exit")
+
+let userName = prompt("Enter your name")
+console.log(userName)
