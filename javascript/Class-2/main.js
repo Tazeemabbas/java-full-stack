@@ -9,3 +9,5 @@ console.log(x)
 
 var name = "Tazu"
 console.log(name)
+
+console.log(typeof(name))
