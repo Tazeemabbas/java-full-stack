@@ -1,0 +1,10 @@
+.container{
+    background-image: url("mount-everest-nepal-istock-3746.jpg");
+    background-size: cover;
+    height: 100vh;
+}
+
+.card{
+    background-color: aliceblue;
+    text-align: center;
+}
